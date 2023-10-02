@@ -101,13 +101,13 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                          <Component id="LBLogOut" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cmdLogOut" min="-2" pref="141" max="-2" attributes="0"/>
+                          <Component id="BTNLogOut" min="-2" pref="141" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="txt" min="-2" pref="569" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cmdSend" min="-2" pref="43" max="-2" attributes="0"/>
+                          <Component id="BTNSend" min="-2" pref="43" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
@@ -139,12 +139,12 @@
                   </Group>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel4" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="LBLogOut" min="-2" pref="31" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cmdLogOut" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="BTNLogOut" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                           <Component id="txt" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="cmdSend" min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="BTNSend" min="-2" pref="38" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
@@ -231,7 +231,7 @@
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTextField(){&#xa;    @Override&#xa;    protected void paintComponent(Graphics g) {&#xa;        super.paintComponent(g);&#xa;        Graphics2D g2 = (Graphics2D) g;&#xa;        g2.setColor(new Color(0,102,255));&#xa;        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);&#xa;        g2.drawRoundRect(0, 0, getWidth()-1, getHeight()-1, 0, 0);&#xa;    }&#xa;}"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="cmdSend">
+        <Component class="javax.swing.JButton" name="BTNSend">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/icon/send.png"/>
@@ -249,7 +249,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmdSendActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTNSendActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
@@ -274,9 +274,9 @@
             <Property name="text" type="java.lang.String" value="Chat"/>
           </Properties>
         </Component>
-        <Component class="my_swing.Button" name="cmdLogOut">
+        <Component class="Designs.Button" name="BTNLogOut">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor" postCode="cmdLogOut.setFillBorder(20);">
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor" postCode="BTNLogOut.setFillBorder(20);">
               <Color blue="ff" green="66" red="0" type="rgb"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -299,7 +299,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmdLogOutActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTNLogOutActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbStatus">
@@ -313,7 +313,7 @@
             <Property name="horizontalAlignment" type="int" value="11"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
+        <Component class="javax.swing.JLabel" name="LBLogOut">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/icon/logout.png"/>

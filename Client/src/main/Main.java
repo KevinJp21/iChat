@@ -19,11 +19,11 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.Timer;
 import message.Message;
-import my_swing.Get_Box;
-import my_swing.Friend_Box;
-import my_swing.Get_Box_New;
-import my_swing.Send_Box;
-import my_swing.Send_Box_New;
+import Designs.Get_Box;
+import Designs.Friend_Box;
+import Designs.Get_Box_New;
+import Designs.Send_Box;
+import Designs.Send_Box_New;
 
 public class Main extends javax.swing.JFrame {
     int LayoutX;
@@ -40,7 +40,7 @@ public class Main extends javax.swing.JFrame {
         new Scrolling(panelFriend);
         Method.setTextFieldSyle(txt,"");
         for (int i = 0; i < 10; i++) {
-            cmdSendActionPerformed(null);
+            BTNSendActionPerformed(null);
         }
     }
 
@@ -82,12 +82,12 @@ public class Main extends javax.swing.JFrame {
                 g2.drawRoundRect(0, 0, getWidth()-1, getHeight()-1, 0, 0);
             }
         };
-        cmdSend = new javax.swing.JButton();
+        BTNSend = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        cmdLogOut = new my_swing.Button();
+        BTNLogOut = new Designs.Button();
         lbStatus = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        LBLogOut = new javax.swing.JLabel();
         JPEnc = new javax.swing.JPanel();
         BTNMinizise = new javax.swing.JButton();
         BTNClose = new javax.swing.JButton();
@@ -149,15 +149,15 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        cmdSend.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/send.png"))); // NOI18N
-        cmdSend.setBorder(null);
-        cmdSend.setContentAreaFilled(false);
-        cmdSend.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cmdSend.setFocusable(false);
-        cmdSend.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/send-small.png"))); // NOI18N
-        cmdSend.addActionListener(new java.awt.event.ActionListener() {
+        BTNSend.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/send.png"))); // NOI18N
+        BTNSend.setBorder(null);
+        BTNSend.setContentAreaFilled(false);
+        BTNSend.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BTNSend.setFocusable(false);
+        BTNSend.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/send-small.png"))); // NOI18N
+        BTNSend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmdSendActionPerformed(evt);
+                BTNSendActionPerformed(evt);
             }
         });
 
@@ -169,19 +169,19 @@ public class Main extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Chat");
 
-        cmdLogOut.setBackground(new java.awt.Color(0, 102, 255));
-        cmdLogOut.setFillBorder(20);
-        cmdLogOut.setBorder(null);
-        cmdLogOut.setForeground(new java.awt.Color(255, 255, 255));
-        cmdLogOut.setText("Cerrar sesión");
-        cmdLogOut.setBorderPainted(false);
-        cmdLogOut.setColorClick(new java.awt.Color(0, 153, 204));
-        cmdLogOut.setColorOver(new java.awt.Color(0, 204, 255));
-        cmdLogOut.setFocusable(false);
-        cmdLogOut.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        cmdLogOut.addActionListener(new java.awt.event.ActionListener() {
+        BTNLogOut.setBackground(new java.awt.Color(0, 102, 255));
+        BTNLogOut.setFillBorder(20);
+        BTNLogOut.setBorder(null);
+        BTNLogOut.setForeground(new java.awt.Color(255, 255, 255));
+        BTNLogOut.setText("Cerrar sesión");
+        BTNLogOut.setBorderPainted(false);
+        BTNLogOut.setColorClick(new java.awt.Color(0, 153, 204));
+        BTNLogOut.setColorOver(new java.awt.Color(0, 204, 255));
+        BTNLogOut.setFocusable(false);
+        BTNLogOut.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        BTNLogOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmdLogOutActionPerformed(evt);
+                BTNLogOutActionPerformed(evt);
             }
         });
 
@@ -189,7 +189,7 @@ public class Main extends javax.swing.JFrame {
         lbStatus.setForeground(new java.awt.Color(255, 0, 51));
         lbStatus.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logout.png"))); // NOI18N
+        LBLogOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logout.png"))); // NOI18N
 
         javax.swing.GroupLayout panel_bgLayout = new javax.swing.GroupLayout(panel_bg);
         panel_bg.setLayout(panel_bgLayout);
@@ -206,13 +206,13 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(lbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panel_bgLayout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addComponent(jLabel4)
+                        .addComponent(LBLogOut)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmdLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BTNLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(txt, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmdSend, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(BTNSend, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panel_bgLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(spFriend, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -235,11 +235,11 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(spChat, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addGroup(panel_bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LBLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panel_bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cmdLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BTNLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txt, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(cmdSend, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BTNSend, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
 
@@ -338,7 +338,7 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 
-    private void cmdSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdSendActionPerformed
+    private void BTNSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNSendActionPerformed
         if (txt.getName().equals("have") && !txt.getText().equals("")) {
             try {
                 Method.sendMessage(txt.getText().trim());
@@ -347,11 +347,11 @@ public class Main extends javax.swing.JFrame {
             } catch (Exception e) {
             }
         }
-    }//GEN-LAST:event_cmdSendActionPerformed
+    }//GEN-LAST:event_BTNSendActionPerformed
 
     private void txtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtKeyTyped
         if (evt.getKeyChar() == 10) {
-            cmdSendActionPerformed(null);
+            BTNSendActionPerformed(null);
         }
     }//GEN-LAST:event_txtKeyTyped
 
@@ -394,7 +394,7 @@ public class Main extends javax.swing.JFrame {
         start();
     }//GEN-LAST:event_formWindowOpened
 
-    private void cmdLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLogOutActionPerformed
+    private void BTNLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNLogOutActionPerformed
         int c = JOptionPane.showConfirmDialog(this, "¿Seguro que quieres cerrar sesión?", "Cerrar sesión", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (c == JOptionPane.YES_OPTION) {
             try {
@@ -402,7 +402,7 @@ public class Main extends javax.swing.JFrame {
             } catch (Exception e) {
             }
         }
-    }//GEN-LAST:event_cmdLogOutActionPerformed
+    }//GEN-LAST:event_BTNLogOutActionPerformed
 
     private void txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtActionPerformed
         // TODO add your handling code here:
@@ -558,15 +558,15 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTNClose;
+    private Designs.Button BTNLogOut;
     private javax.swing.JButton BTNMinizise;
+    private javax.swing.JButton BTNSend;
     private javax.swing.JPanel JPEnc;
     private javax.swing.JLabel LBIcon;
-    private my_swing.Button cmdLogOut;
-    private javax.swing.JButton cmdSend;
+    private javax.swing.JLabel LBLogOut;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lbStatus;
     private javax.swing.JDesktopPane panelChat;
     private javax.swing.JPanel panelFriend;

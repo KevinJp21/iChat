@@ -1,4 +1,4 @@
-package my_swing;
+package Designs;
 
 import java.awt.Color;
 import java.awt.Image;

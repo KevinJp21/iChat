@@ -1,15 +1,8 @@
 package function;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.swing.ImageIcon;
-import javax.swing.filechooser.FileSystemView;
 import message.Message;
 
 public class Client extends Thread {
@@ -22,31 +15,33 @@ public class Client extends Thread {
     private int ID;
     private String time;
 
-    public Client(Socket socket) {
+    public Client(Socket socket) {//constructor de la clase Client, que recibe un objeto Socket como argumento. 
         this.socket = socket;
         execute();
     }
 
-    private void execute() {
+    private void execute() {//inicia el hilo de ejecución del cliente utilizando this.start(). Esto significa que el cliente se ejecutará en paralelo con otros clientes y el servidor.
         this.start();
     }
 
     @Override
     public void run() {
         try {
+            /* se inicializan los flujos de entrada (in) y salida (out) de objetos a través del socket para comunicarse con el cliente. Además, se obtiene un ID único para el cliente llamando al método addClient(this) de la clase Method y se almacena en la variable ID.*/
             in = new ObjectInputStream(socket.getInputStream());
             out = new ObjectOutputStream(socket.getOutputStream());
             ID = Method.addClient(this);
-            //  loop starting get message from client
+            /*Se inicia un bucle infinito que permite al cliente escuchar continuamente mensajes entrantes del servidor y otros clientes. Dentro del bucle, se lee un objeto Message del flujo de entrada (in) y se almacena en la variable ms. Luego, se obtiene el estado del mensaje (status) utilizando getStatus()*/
             while (true) {
                 Message ms = (Message) in.readObject();
                 String status = ms.getStatus();
                 if (status.equals("New")) {
+                    /*Se extrae el nombre de usuario y la hora de conexión del mensaje y se almacenan en las variables userName y time.*/
                     userName = ms.getName().split("!")[0];
                     time = ms.getName().split("!")[1];
                     profile = ms.getImage();
-                    Method.getTxt().append("New Client name : " + userName + " has connected ...\n");
-                    //  list all friend send to new client login
+                    Method.getTxt().append("Nuevo Cliente: " + userName + " Se ha conectado\n");
+                     // Listar a todos los amigos y enviarlos al nuevo cliente
                     for (Client client : Method.getClients()) {
                         ms = new Message();
                         ms.setStatus("New");
@@ -56,7 +51,7 @@ public class Client extends Thread {
                         out.writeObject(ms);
                         out.flush();
                     }
-                    //  send new client to old client
+                    // Enviar al nuevo cliente a los clientes existentes
                     for (Client client : Method.getClients()) {
                         if (client != this) {
                             ms = new Message();
@@ -68,28 +63,8 @@ public class Client extends Thread {
                             client.getOut().flush();
                         }
                     }
-                } else if (status.equals("File")) {
-                    int fileID = Method.getFileID();
-                    String fileN = ms.getName();
-                    SimpleDateFormat df = new SimpleDateFormat("ddMMyyyyhhmmssaa");
-                    String fileName = fileID + "!" + df.format(new Date()) + "!" + ms.getName().split("!")[0];
-                    Method.getTxt().append(fileName);
-                    FileOutputStream output = new FileOutputStream(new File("data/" + fileName));
-                    output.write(ms.getData());
-                    output.close();
-                    Method.setFileID(fileID + 1);
-                    ms = new Message();
-                    ms.setStatus("File");
-                    ms.setName(fileID + "!" + fileN);
-                    ms.setImage((ImageIcon) FileSystemView.getFileSystemView().getSystemIcon(new File("data/" + fileName)));
-                    ms.setID(ID);
-                    for (Client client : Method.getClients()) {
-                        client.getOut().writeObject(ms);
-                        client.getOut().flush();
-                    }
-                } else if (status.equals("download")) {
-                    sendFile(ms);
                 } else {
+                    /*se reenvía el mensaje a todos los clientes conectados, incluido el propio cliente que lo envió.*/
                     for (Client client : Method.getClients()) {
                         client.getOut().writeObject(ms);
                         client.getOut().flush();
@@ -99,8 +74,9 @@ public class Client extends Thread {
 
         } catch (Exception e) {
             try {
+                //Eliminar cliente del servidor
                 Method.getClients().remove(this);
-                Method.getTxt().append("Client Name : " + userName + " has been out of this server ...\n");
+                Method.getTxt().append("Cliente : " + userName + " Se ha salido del servidor ...\n");
                 for (Client s : Method.getClients()) {
                     Message ms = new Message();
                     ms.setStatus("Error");
@@ -113,34 +89,6 @@ public class Client extends Thread {
                 Method.getTxt().append("Error : " + e1);
             }
         }
-    }
-
-    private void sendFile(Message ms) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                String fID = ms.getMessage();
-                File file = new File("data");
-                for (File f : file.listFiles()) {
-                    if (f.getName().startsWith(fID)) {
-                        try {
-                            FileInputStream ins = new FileInputStream(f);
-                            byte data[] = new byte[ins.available()];
-                            ins.read(data);
-                            ins.close();
-                            ms.setData(data);
-                            ms.setStatus("GetFile");
-                            out.writeObject(ms);
-                            out.flush();
-                            break;
-                        } catch (Exception e) {
-                            //  send to client error
-
-                        }
-                    }
-                }
-            }
-        }).start();
     }
 
     public Socket getSocket() {

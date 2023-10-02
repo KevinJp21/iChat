@@ -22,7 +22,6 @@ public class Login extends javax.swing.JFrame {
     }
 
     private void open() {
-        setIconImage(new ImageIcon(getClass().getResource("/icon/icon.png")).getImage());
         Method.setTextFieldSyle(txtUser, "Nombre de usuario");
         Method.setTextFieldSyle(txtIP, "Dirección IP");
         showStatus(ms);
@@ -35,7 +34,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         txtIP = new javax.swing.JTextField();
         txtUser = new javax.swing.JTextField();
-        cmdLogin = new my_swing.Button();
+        BTNLogin = new Designs.Button();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         lbStatus = new javax.swing.JLabel();
         profile = new javax.swing.JLabel();
@@ -88,17 +87,17 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        cmdLogin.setBackground(new java.awt.Color(0, 102, 255));
-        cmdLogin.setForeground(new java.awt.Color(255, 255, 255));
-        cmdLogin.setText("Iniciar sesión");
-        cmdLogin.setColorClick(new java.awt.Color(0, 153, 204));
-        cmdLogin.setColorOver(new java.awt.Color(0, 204, 255));
-        cmdLogin.setFillBorder(20);
-        cmdLogin.setFocusable(false);
-        cmdLogin.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-        cmdLogin.addActionListener(new java.awt.event.ActionListener() {
+        BTNLogin.setBackground(new java.awt.Color(0, 102, 255));
+        BTNLogin.setForeground(new java.awt.Color(255, 255, 255));
+        BTNLogin.setText("Iniciar sesión");
+        BTNLogin.setColorClick(new java.awt.Color(0, 153, 204));
+        BTNLogin.setColorOver(new java.awt.Color(0, 204, 255));
+        BTNLogin.setFillBorder(20);
+        BTNLogin.setFocusable(false);
+        BTNLogin.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        BTNLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmdLoginActionPerformed(evt);
+                BTNLoginActionPerformed(evt);
             }
         });
 
@@ -125,24 +124,26 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(117, 117, 117)
-                        .addComponent(cmdLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(BTNLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(158, 158, 158)
                         .addComponent(profile)
                         .addGap(18, 18, 18)
-                        .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(119, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(90, 90, 90)
-                        .addComponent(lbStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)))
-                .addGap(84, 84, 84))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtIP)
-                        .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                        .addComponent(jSeparator2)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtIP)
+                                .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                                .addComponent(jSeparator2))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(lbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -161,7 +162,7 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cmdLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BTNLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(21, Short.MAX_VALUE))
@@ -263,7 +264,7 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cmdLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLoginActionPerformed
+    private void BTNLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNLoginActionPerformed
         try {
             if (txtUser.getText().equals("") || !txtUser.getName().equals("have")) {
                 txtUser.grabFocus();
@@ -298,7 +299,7 @@ public class Login extends javax.swing.JFrame {
             System.out.println(e);
         }
 
-    }//GEN-LAST:event_cmdLoginActionPerformed
+    }//GEN-LAST:event_BTNLoginActionPerformed
 
     private void txtUserKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyTyped
         if (evt.getKeyChar() == 10) {
@@ -311,7 +312,7 @@ public class Login extends javax.swing.JFrame {
 
     private void txtIPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIPKeyTyped
         if (evt.getKeyChar() == 10) {
-            cmdLoginActionPerformed(null);
+            BTNLoginActionPerformed(null);
         }
     }//GEN-LAST:event_txtIPKeyTyped
 
@@ -401,10 +402,10 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTNClose;
+    private Designs.Button BTNLogin;
     private javax.swing.JButton BTNMinizise;
     private javax.swing.JPanel JPEnc;
     private javax.swing.JLabel LBIcon;
-    private my_swing.Button cmdLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;

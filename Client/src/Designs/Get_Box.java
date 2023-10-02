@@ -1,4 +1,4 @@
-package my_swing;
+package Designs;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -38,7 +38,6 @@ public class Get_Box extends javax.swing.JPanel {
         txt.setBackground(new java.awt.Color(2, 0, 8));
         txt.setFont(new java.awt.Font("Khmer SBBIC Serif", 0, 15)); // NOI18N
         txt.setForeground(new java.awt.Color(255, 255, 255));
-        txt.setText("your message here");
         txt.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 10));
         txt.setSelectionColor(new java.awt.Color(131, 188, 227));
 

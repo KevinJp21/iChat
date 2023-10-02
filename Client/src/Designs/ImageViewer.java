@@ -1,4 +1,4 @@
-package my_swing;
+package Designs;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;

@@ -1,4 +1,4 @@
-package my_swing;
+package Designs;
 
 import function.Method;
 import java.awt.Graphics;
