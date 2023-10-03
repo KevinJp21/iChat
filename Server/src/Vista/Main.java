@@ -4,12 +4,14 @@ import Controlador.Client;
 import Controlador.Method;
 import java.net.ServerSocket;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class Main extends javax.swing.JFrame {
     int LayoutX;
     int LayoutY;
     public Main() {
+        setIconImage(new ImageIcon(getClass().getResource("/icon/icon-servidor.png")).getImage());
         initComponents();
     }
 

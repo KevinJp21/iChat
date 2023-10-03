@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
 import java.awt.geom.RoundRectangle2D;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
@@ -23,6 +24,7 @@ public class Main extends javax.swing.JFrame {
     int LayoutX;
     int LayoutY;
     public Main() {
+        setIconImage(new ImageIcon(getClass().getResource("/icon/icon.png")).getImage());
         initComponents();
         open();
     }
@@ -33,9 +35,6 @@ public class Main extends javax.swing.JFrame {
         new Scroll(panelChat);
         new Scroll(panelFriend);
         Method.setTextFieldSyle(txt,"");
-        for (int i = 0; i < 10; i++) {
-            BTNSendActionPerformed(null);
-        }
     }
 
     
@@ -334,7 +333,7 @@ public class Main extends javax.swing.JFrame {
 
 
     private void BTNSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNSendActionPerformed
-        if (!txt.getText().equals("")) {//Si el text area tiene texto, se envia el texto
+        if (!txt.getText().equals("")) {//Si el text area tiene texto, se envia el mensaje
             try {
                 Method.sendMessage(txt.getText().trim());
                 txt.setText("");
@@ -444,7 +443,8 @@ public class Main extends javax.swing.JFrame {
         }
     }
 
-    private void getMessage(int ID, String ms) {//Se obtiene el mensaje
+    private void getMessage(int ID, String ms) {//ID y ms toman los valores del ultimo cliente que envió un mensaje
+        
         if (ID == Method.getMyID()) {
             if (ID == currentID) {
                 SendMessage box = new SendMessage();

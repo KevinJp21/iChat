@@ -1,17 +1,21 @@
 package Vista;
 
 import Controlador.Method;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.ConnectException;
 import java.net.UnknownHostException;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
 public class Login extends javax.swing.JFrame {
+    
     int LayoutX;
     int LayoutY;
     public Login() {
+        setIconImage(new ImageIcon(getClass().getResource("/icon/icon.png")).getImage());
         initComponents();
         open();
     }
