@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Proyectos/iChat/Client/src/main/Main.java</file>
-            <file>file:/D:/Proyectos/iChat/Client/src/Designs/Get_Box.java</file>
-            <file>file:/D:/Proyectos/iChat/Client/src/main/Login.java</file>
+            <file>file:/D:/Proyectos/iChat/Client/src/Vista/SendMessage.java</file>
+            <file>file:/D:/Proyectos/iChat/Client/src/Vista/Login.java</file>
+            <file>file:/D:/Proyectos/iChat/Client/src/Controlador/Method.java</file>
+            <file>file:/D:/Proyectos/iChat/Client/src/Vista/Main.java</file>
         </group>
     </open-files>
 </project-private>

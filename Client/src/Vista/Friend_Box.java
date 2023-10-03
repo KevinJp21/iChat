@@ -1,9 +1,9 @@
-package Designs;
+package Vista;
 
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import model.Friend;
+import Controlador.Friend;
 
 public class Friend_Box extends javax.swing.JPanel implements Friend {
 
@@ -13,17 +13,7 @@ public class Friend_Box extends javax.swing.JPanel implements Friend {
     private String time;
 
     @Override
-    public void set(ImageIcon image, int ID, String name, String time) {
-        if (image != null) {
-            Image img;
-            if (image.getIconWidth() > image.getIconHeight()) {
-                img = image.getImage().getScaledInstance(60, -1, Image.SCALE_SMOOTH);
-            } else {
-                img = image.getImage().getScaledInstance(-1, 60, Image.SCALE_SMOOTH);
-            }
-            icon = new ImageIcon(img);
-            profile.setIcon(icon);
-        }
+    public void set(int ID, String name, String time) {
         lbName.setText(name);
         lbTime.setText(time);
         this.ID = ID;
@@ -63,7 +53,7 @@ public class Friend_Box extends javax.swing.JPanel implements Friend {
         lbTime.setText("12:00 PM");
 
         lbName.setBackground(new java.awt.Color(0, 204, 255));
-        lbName.setFont(new java.awt.Font("Khmer SBBIC Serif", 1, 13)); // NOI18N
+        lbName.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lbName.setForeground(new java.awt.Color(255, 255, 255));
         lbName.setText("Friend Name");
 
@@ -98,10 +88,7 @@ public class Friend_Box extends javax.swing.JPanel implements Friend {
                 .addComponent(line, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
-    @Override
-    public ImageIcon getImage() {
-        return icon;
-    }
+
 
     public void setIcon(ImageIcon icon) {
         this.icon = icon;

@@ -1,4 +1,4 @@
-package function;
+package Controlador;
 
 import java.awt.Component;
 import java.awt.Container;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
-public class Scrolling implements MouseListener, MouseMotionListener {
+public class Scroll implements MouseListener, MouseMotionListener {
 
     public static final int DRAGGABLE_HORIZONTAL_SCROLL_BAR = 1;
     public static final int DRAGGABLE_VERTICAL_SCROLL_BAR = 2;
@@ -36,7 +36,7 @@ public class Scrolling implements MouseListener, MouseMotionListener {
     private Cursor defaultCursor;
     private final java.util.List<Point2D.Double> dragSpeeds = new ArrayList<>();
 
-    public Scrolling(Component c) {
+    public Scroll(Component c) {
         draggableComponent = c;
         defaultCursor = draggableComponent.getCursor();
         draggableComponent.addPropertyChangeListener(new PropertyChangeListener() {

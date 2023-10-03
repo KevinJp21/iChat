@@ -1,17 +1,15 @@
 package message;
 
 import java.io.Serializable;
-import javax.swing.ImageIcon;
 
-public class Message implements Serializable {
+public class Message implements Serializable {//Se utiliza la interfaz serializable para convertir el objeto Mensaje en bytes y poder transmitirlo a otros dispositivos de la red
 
-    private static final long serialVersionUID = 1234L;
+    private static final long serialVersionUID = 123L;//Como mensaje esta importado en server y client, ambos tienen el mismo serial UID por lo que la interfaz serialize puede deserializar el objeto recibido
     private String status;
     private int ID;
     private String name;
     private String message;
-    private ImageIcon image;
-    private byte[] data;
+
 
     public String getStatus() {
         return status;
@@ -43,21 +41,5 @@ public class Message implements Serializable {
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public byte[] getData() {
-        return data;
-    }
-
-    public void setData(byte[] data) {
-        this.data = data;
-    }
-
-    public ImageIcon getImage() {
-        return image;
-    }
-
-    public void setImage(ImageIcon image) {
-        this.image = image;
     }
 }

@@ -1,21 +1,19 @@
-package Designs;
+package Vista;
 
-import function.Method;
+import Controlador.Method;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
-public class Get_Box_New extends javax.swing.JPanel {
+public class GetNewMessage extends javax.swing.JPanel {
 
-    public Get_Box_New() {
+    public GetNewMessage() {
         initComponents();
     }
 
     public void setMessage(int ID, String ms) {
         txt.setText(ms);
-        if (Method.getFriends().get(ID).getImage() != null) {
-            profile.setIcon(Method.getFriends().get(ID).getImage());
-        }
+        
         lbName.setText(Method.getFriends().get(ID).getfName());
     }
 
@@ -44,9 +42,9 @@ public class Get_Box_New extends javax.swing.JPanel {
 
         txt.setEditable(false);
         txt.setBackground(new java.awt.Color(2, 0, 8));
-        txt.setFont(new java.awt.Font("Khmer SBBIC Serif", 0, 15)); // NOI18N
+        txt.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         txt.setForeground(new java.awt.Color(255, 255, 255));
-        txt.setText("your message here");
+        txt.setText("Mensaje");
         txt.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 10));
         txt.setMaximumSize(new java.awt.Dimension(510, 33));
         txt.setMinimumSize(new java.awt.Dimension(510, 33));

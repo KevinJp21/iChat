@@ -1,4 +1,4 @@
-package function;
+package Controlador;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -39,7 +39,6 @@ public class Client extends Thread {
                     /*Se extrae el nombre de usuario y la hora de conexión del mensaje y se almacenan en las variables userName y time.*/
                     userName = ms.getName().split("!")[0];
                     time = ms.getName().split("!")[1];
-                    profile = ms.getImage();
                     Method.getTxt().append("Nuevo Cliente: " + userName + " Se ha conectado\n");
                      // Listar a todos los amigos y enviarlos al nuevo cliente
                     for (Client client : Method.getClients()) {
@@ -47,7 +46,6 @@ public class Client extends Thread {
                         ms.setStatus("New");
                         ms.setID(client.getID());
                         ms.setName(client.getUserName() + "!" + client.getTime());
-                        ms.setImage(client.getProfile());
                         out.writeObject(ms);
                         out.flush();
                     }
@@ -58,7 +56,6 @@ public class Client extends Thread {
                             ms.setStatus("New");
                             ms.setName(userName + "!" + time);
                             ms.setID(ID);
-                            ms.setImage(profile);
                             client.getOut().writeObject(ms);
                             client.getOut().flush();
                         }

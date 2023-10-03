@@ -1,7 +1,7 @@
-package main;
+package Vista;
 
-import function.Method;
-import function.Scrolling;
+import Controlador.Method;
+import Controlador.Scroll;
 import java.awt.Adjustable;
 import java.awt.Color;
 import java.awt.Component;
@@ -13,17 +13,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
 import java.awt.geom.RoundRectangle2D;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.Timer;
 import message.Message;
-import Designs.Get_Box;
-import Designs.Friend_Box;
-import Designs.Get_Box_New;
-import Designs.Send_Box;
-import Designs.Send_Box_New;
 
 public class Main extends javax.swing.JFrame {
     int LayoutX;
@@ -36,8 +30,8 @@ public class Main extends javax.swing.JFrame {
     private void open() {
         Method.setFram(this);
         //Scroll manteniendo el click izquierdo
-        new Scrolling(panelChat);
-        new Scrolling(panelFriend);
+        new Scroll(panelChat);
+        new Scroll(panelFriend);
         Method.setTextFieldSyle(txt,"");
         for (int i = 0; i < 10; i++) {
             BTNSendActionPerformed(null);
@@ -85,7 +79,7 @@ public class Main extends javax.swing.JFrame {
         BTNSend = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        BTNLogOut = new Designs.Button();
+        BTNLogOut = new Vista.Button();
         lbStatus = new javax.swing.JLabel();
         LBLogOut = new javax.swing.JLabel();
         JPEnc = new javax.swing.JPanel();
@@ -199,6 +193,9 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(panel_bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_bgLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
+                        .addComponent(spFriend, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel_bgLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -214,11 +211,9 @@ public class Main extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BTNSend, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panel_bgLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(spFriend, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(spChat, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                        .addGap(224, 224, 224)
+                        .addComponent(spChat, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         panel_bgLayout.setVerticalGroup(
             panel_bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -339,7 +334,7 @@ public class Main extends javax.swing.JFrame {
 
 
     private void BTNSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNSendActionPerformed
-        if (txt.getName().equals("have") && !txt.getText().equals("")) {
+        if (!txt.getText().equals("")) {//Si el text area tiene texto, se envia el texto
             try {
                 Method.sendMessage(txt.getText().trim());
                 txt.setText("");
@@ -367,24 +362,25 @@ public class Main extends javax.swing.JFrame {
                         System.out.println("Esperando mensaje ...");
                         Message ms = (Message) Method.getIn().readObject();
                         String status = ms.getStatus();
-                        if (status.equals("Message")) {
-                            getMessage(ms.getID(), ms.getMessage());
-                        } else if (status.equals("New")) {
-                            newFriend(ms.getImage(), ms.getID(), ms.getName().split("!")[0], ms.getName().split("!")[1]);
-                        } else if (status.equals("Error")) {
-                            errorFrient(ms.getID());
+                        switch (status) {
+                            case "Message":
+                                getMessage(ms.getID(), ms.getMessage());
+                                break;
+                            case "New":
+                                newFriend(ms.getID(), ms.getName().split("!")[0], ms.getName().split("!")[1]);
+                                break;
+                            case "Error":
+                                errorFrient(ms.getID());
+                                break;
+                            default:
+                                break;
                         }
                     }
                 } catch (Exception e) {
                     String ms = e.getMessage();
                     if (ms.equals("Socket closed")) {
-                        signOut("Sign out");
-                    } else if (ms.equals("Connection reset")) {
-                        signOut("Server has error");
-                    } else {
-                        signOut("Error : " + ms);
+                        signOut("Sesión Cerrada");
                     }
-
                 }
             }
         });
@@ -448,24 +444,24 @@ public class Main extends javax.swing.JFrame {
         }
     }
 
-    private void getMessage(int ID, String ms) {
+    private void getMessage(int ID, String ms) {//Se obtiene el mensaje
         if (ID == Method.getMyID()) {
             if (ID == currentID) {
-                Send_Box box = new Send_Box();
+                SendMessage box = new SendMessage();
                 box.setMessage(ms);
                 panelChat.add(box);
             } else {
-                Send_Box_New box = new Send_Box_New();
+                SendNewMessage box = new SendNewMessage();
                 box.setMessage(ID, ms);
                 panelChat.add(box);
             }
         } else {
             if (ID == currentID) {
-                Get_Box box = new Get_Box();
+                GetMessage box = new GetMessage();
                 box.setMessage(ms);
                 panelChat.add(box);
             } else {
-                Get_Box_New box = new Get_Box_New();
+                GetNewMessage box = new GetNewMessage();
                 box.setMessage(ID, ms);
                 panelChat.add(box);
             }
@@ -476,9 +472,9 @@ public class Main extends javax.swing.JFrame {
     }
 
 
-    private void newFriend(ImageIcon image, int ID, String name, String time) {
+    private void newFriend(int ID, String name, String time) {
         Friend_Box friend = new Friend_Box();
-        friend.set(image, ID, name, time);
+        friend.set(ID, name, time);
         Method.getFriends().put(ID, friend);
         if (Method.getMyName().equalsIgnoreCase(name)) {
             Method.setMyID(ID);
@@ -521,15 +517,6 @@ public class Main extends javax.swing.JFrame {
         }
     });
 
-    private void showStatus(String error) {
-        if (timer.isRunning()) {
-            lbStatus.setText("");
-            timer.stop();
-        }
-        timer.start();
-        lbStatus.setText(error);
-    }
-
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -558,7 +545,7 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTNClose;
-    private Designs.Button BTNLogOut;
+    private Vista.Button BTNLogOut;
     private javax.swing.JButton BTNMinizise;
     private javax.swing.JButton BTNSend;
     private javax.swing.JPanel JPEnc;

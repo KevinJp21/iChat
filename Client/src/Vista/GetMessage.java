@@ -1,12 +1,12 @@
-package Designs;
+package Vista;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
-public class Get_Box extends javax.swing.JPanel {
+public class GetMessage extends javax.swing.JPanel {
 
-    public Get_Box() {
+    public GetMessage() {
         initComponents();
     }
 
@@ -36,8 +36,9 @@ public class Get_Box extends javax.swing.JPanel {
 
         txt.setEditable(false);
         txt.setBackground(new java.awt.Color(2, 0, 8));
-        txt.setFont(new java.awt.Font("Khmer SBBIC Serif", 0, 15)); // NOI18N
+        txt.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         txt.setForeground(new java.awt.Color(255, 255, 255));
+        txt.setText("Mensaje");
         txt.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 10));
         txt.setSelectionColor(new java.awt.Color(131, 188, 227));
 

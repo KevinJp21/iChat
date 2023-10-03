@@ -1,17 +1,12 @@
-package main;
+package Vista;
 
-import function.Method;
-import java.awt.Image;
+import Controlador.Method;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.net.ConnectException;
 import java.net.UnknownHostException;
 import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
-import javax.swing.SwingUtilities;
 import javax.swing.Timer;
-import javax.swing.filechooser.FileFilter;
 
 public class Login extends javax.swing.JFrame {
     int LayoutX;
@@ -34,7 +29,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         txtIP = new javax.swing.JTextField();
         txtUser = new javax.swing.JTextField();
-        BTNLogin = new Designs.Button();
+        BTNLogin = new Vista.Button();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         lbStatus = new javax.swing.JLabel();
         profile = new javax.swing.JLabel();
@@ -57,7 +52,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
         txtIP.setBackground(new java.awt.Color(2, 0, 8));
-        txtIP.setFont(new java.awt.Font("Khmer SBBIC Serif", 1, 18)); // NOI18N
+        txtIP.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtIP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtIP.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 10));
         txtIP.setSelectionColor(new java.awt.Color(131, 188, 227));
@@ -68,7 +63,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         txtUser.setBackground(new java.awt.Color(2, 0, 8));
-        txtUser.setFont(new java.awt.Font("Khmer SBBIC Serif", 1, 18)); // NOI18N
+        txtUser.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtUser.setForeground(new java.awt.Color(255, 255, 255));
         txtUser.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtUser.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 10));
@@ -103,7 +98,7 @@ public class Login extends javax.swing.JFrame {
 
         jLayeredPane1.setLayout(new javax.swing.OverlayLayout(jLayeredPane1));
 
-        lbStatus.setFont(new java.awt.Font("Khmer SBBIC Serif", 0, 14)); // NOI18N
+        lbStatus.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbStatus.setForeground(new java.awt.Color(204, 0, 0));
         lbStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
@@ -266,7 +261,7 @@ public class Login extends javax.swing.JFrame {
 
     private void BTNLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNLoginActionPerformed
         try {
-            if (txtUser.getText().equals("") || !txtUser.getName().equals("have")) {
+            if (txtUser.getText().equals("")) {
                 txtUser.grabFocus();
                 showStatus("Por favor ingresa tu nombre de usuario");
             } else {
@@ -275,9 +270,8 @@ public class Login extends javax.swing.JFrame {
                     showStatus("Tu nombre de usuario debe tener menos de 15 caracteres");
                 } else {
                     String IP = txtIP.getText().trim();
-                    if (txtIP.getText().equals("") || !txtIP.getName().equals("have")) {
+                    if (txtIP.getText().equals("")) {
                         IP = "localhost";
-                        System.err.println("have");
                     }
                     String userName = txtUser.getText().trim();
                     Method.connect(profile_pic, userName, IP);
@@ -402,7 +396,7 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTNClose;
-    private Designs.Button BTNLogin;
+    private Vista.Button BTNLogin;
     private javax.swing.JButton BTNMinizise;
     private javax.swing.JPanel JPEnc;
     private javax.swing.JLabel LBIcon;

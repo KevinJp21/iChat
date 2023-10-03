@@ -1,11 +1,9 @@
-package function;
+package Controlador;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -16,7 +14,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import message.Message;
-import model.Friend;
 
 public class Method {
  
@@ -48,19 +45,6 @@ public class Method {
                 if (txt.getText().trim().equals("")) {
                     txt.setForeground(new Color(186, 186, 186));
                     txt.setText(style);
-                    txt.setName("");
-                } else {
-                    txt.setName("have");
-                }
-            }
-        });
-        txt.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyReleased(KeyEvent ke) {
-                if (txt.getText().trim().equals("")) {
-                    txt.setName("");
-                } else {
-                    txt.setName("have");
                 }
             }
         });
@@ -74,7 +58,6 @@ public class Method {
         String t = df.format(new Date());
         Message ms = new Message();
         ms.setStatus("New");
-        ms.setImage(icon);
         ms.setName(userName + "!" + t);
         out.writeObject(ms);
         out.flush();
@@ -89,15 +72,6 @@ public class Method {
         ms.setMessage(text);
         out.writeObject(ms);
         out.flush();
-    }
-    
-    //El metodo getFount y getFountBold devuelven las fuentes que se está usando para este programa
-    public static Font getFount() {
-        return new java.awt.Font("Khmer SBBIC Serif", 0, 12);
-    }
-
-    public static Font getFountBold() {
-        return new java.awt.Font("Khmer SBBIC Serif", 1, 12);
     }
     
 

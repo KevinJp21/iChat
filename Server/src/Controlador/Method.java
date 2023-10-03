@@ -1,4 +1,4 @@
-package function;
+package Controlador;
 
 import java.util.ArrayList;
 import javax.swing.JTextArea;
