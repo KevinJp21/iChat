@@ -1,12 +1,10 @@
 package Vista;
 
 import Controlador.Method;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.ConnectException;
 import java.net.UnknownHostException;
-import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
@@ -23,7 +21,7 @@ public class Login extends javax.swing.JFrame {
     private void open() {
         Method.setTextFieldSyle(txtUser, "Nombre de usuario");
         Method.setTextFieldSyle(txtIP, "Dirección IP");
-        showStatus(ms);
+        LoginStatus(ms);
     }
 
     @SuppressWarnings("unchecked")
@@ -267,11 +265,11 @@ public class Login extends javax.swing.JFrame {
         try {
             if (txtUser.getText().equals("")) {
                 txtUser.grabFocus();
-                showStatus("Por favor ingresa tu nombre de usuario");
+                LoginStatus("Por favor ingresa tu nombre de usuario");
             } else {
                 if (txtUser.getText().trim().length() > 15) {
                     txtUser.grabFocus();
-                    showStatus("Tu nombre de usuario debe tener menos de 15 caracteres");
+                    LoginStatus("Tu nombre de usuario debe tener menos de 15 caracteres");
                 } else {
                     String IP = txtIP.getText().trim();
                     if (txtIP.getText().equals("")) {
@@ -285,15 +283,15 @@ public class Login extends javax.swing.JFrame {
 
             }
         } catch (UnknownHostException e) {
-            showStatus("Unknown host : " + txtIP.getText());
+            LoginStatus("Unknown host : " + txtIP.getText());
         } catch (java.rmi.UnknownHostException e) {
-            showStatus("Unknown host : " + txtIP.getText());
+            LoginStatus("Unknown host : " + txtIP.getText());
         } catch (ConnectException e) {
-            showStatus("Servidor no encontrado, Verifique la IP");
+            LoginStatus("Servidor no encontrado, Verifique la IP");
         } catch (java.rmi.ConnectException e) {
-            showStatus("Servidor no encontrado, Verifique la IP");
+            LoginStatus("Servidor no encontrado, Verifique la IP");
         } catch (Exception e) {
-            showStatus("Network is unreachable : connect");
+            LoginStatus("Network is unreachable : connect");
             System.out.println(e);
         }
 
@@ -358,7 +356,7 @@ public class Login extends javax.swing.JFrame {
         }
     });
 
-    private void showStatus(String error) {
+    private void LoginStatus(String error) {//Estado del login
         if (timer.isRunning()) {
             lbStatus.setText("");
             timer.stop();

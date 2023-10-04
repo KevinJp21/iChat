@@ -14,7 +14,6 @@ import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.Timer;
@@ -24,7 +23,7 @@ public class Main extends javax.swing.JFrame {
     int LayoutX;
     int LayoutY;
     public Main() {
-        setIconImage(new ImageIcon(getClass().getResource("/icon/icon.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/icon/icon.png")).getImage());//icono que aparece en la barra de tareas
         initComponents();
         open();
     }
@@ -369,7 +368,7 @@ public class Main extends javax.swing.JFrame {
                                 newFriend(ms.getID(), ms.getName().split("!")[0], ms.getName().split("!")[1]);
                                 break;
                             case "Error":
-                                errorFrient(ms.getID());
+                                RemoveFriend(ms.getID());
                                 break;
                             default:
                                 break;
@@ -390,13 +389,11 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void BTNLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNLogOutActionPerformed
-        int c = JOptionPane.showConfirmDialog(this, "¿Seguro que quieres cerrar sesión?", "Cerrar sesión", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (c == JOptionPane.YES_OPTION) {
-            try {
-                Method.getClient().close();
-            } catch (Exception e) {
-            }
-        }
+        SignOutMS cs = new SignOutMS(this, true);
+        cs.setVisible(true);
+        
+
+
     }//GEN-LAST:event_BTNLogOutActionPerformed
 
     private void txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtActionPerformed
@@ -445,7 +442,7 @@ public class Main extends javax.swing.JFrame {
 
     private void getMessage(int ID, String ms) {//ID y ms toman los valores del ultimo cliente que envió un mensaje
         
-        if (ID == Method.getMyID()) {
+        if (ID == Method.getMyID()) {//El metodo getMyID obtiene el id de usuario que inició sesión 
             if (ID == currentID) {
                 SendMessage box = new SendMessage();
                 box.setMessage(ms);
@@ -472,7 +469,7 @@ public class Main extends javax.swing.JFrame {
     }
 
 
-    private void newFriend(int ID, String name, String time) {
+    private void newFriend(int ID, String name, String time) {//Se agrega el nuevo cliente al panel "PanelFriend"
         Friend_Box friend = new Friend_Box();
         friend.set(ID, name, time);
         Method.getFriends().put(ID, friend);
@@ -484,7 +481,7 @@ public class Main extends javax.swing.JFrame {
         refresh(panelFriend);
     }
 
-    private void errorFrient(int ID) {
+    private void RemoveFriend(int ID) {//Eliminar amigo del panell
         panelFriend.remove((Component) Method.getFriends().get(ID));
         Method.getFriends().remove(ID);
         refresh(panelFriend);
@@ -518,23 +515,6 @@ public class Main extends javax.swing.JFrame {
     });
 
     public static void main(String args[]) {
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
