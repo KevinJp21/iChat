@@ -2,6 +2,11 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/Proyectos/iChat/Server/src/Vista/Button.java</file>
+            <file>file:/D:/Proyectos/iChat/Server/src/Controlador/Client.java</file>
+            <file>file:/D:/Proyectos/iChat/Server/src/Controlador/Method.java</file>
+            <file>file:/D:/Proyectos/iChat/Server/src/Vista/Main.java</file>
+        </group>
     </open-files>
 </project-private>
