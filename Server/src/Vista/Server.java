@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-public class Main extends javax.swing.JFrame {
+public class Server extends javax.swing.JFrame {
 
     int LayoutX;
     int LayoutY;
 
-    public Main() {
+    public Server() {
         setIconImage(new ImageIcon(getClass().getResource("/icon/icon-servidor.png")).getImage());
         initComponents();
     }
@@ -133,12 +133,14 @@ public class Main extends javax.swing.JFrame {
         txt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt.setForeground(new java.awt.Color(255, 255, 255));
         txt.setRows(5);
+        txt.setBorder(null);
         txt.setCaretColor(new java.awt.Color(2, 0, 8));
         jScrollPane1.setViewportView(txt);
 
         BTNStop.setBackground(new java.awt.Color(204, 0, 0));
         BTNStop.setForeground(new java.awt.Color(255, 255, 255));
         BTNStop.setText("Desconectar");
+        BTNStop.setBorderPainted(false);
         BTNStop.setColorClick(new java.awt.Color(0, 153, 204));
         BTNStop.setColorOver(new java.awt.Color(0, 204, 255));
         BTNStop.setFillBorder(20);
@@ -153,6 +155,7 @@ public class Main extends javax.swing.JFrame {
         BTNStart.setBackground(new java.awt.Color(0, 102, 255));
         BTNStart.setForeground(new java.awt.Color(255, 255, 255));
         BTNStart.setText("Conectar");
+        BTNStart.setBorderPainted(false);
         BTNStart.setColorClick(new java.awt.Color(0, 153, 204));
         BTNStart.setColorOver(new java.awt.Color(0, 204, 255));
         BTNStart.setFillBorder(20);
@@ -277,27 +280,10 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_BTNStartActionPerformed
 
     public static void main(String args[]) {
-
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Main().setVisible(true);
+                new Server().setVisible(true);
             }
         });
     }

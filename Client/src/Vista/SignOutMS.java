@@ -5,10 +5,7 @@
 package Vista;
 
 import Controlador.Method;
-import java.awt.Color;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -51,6 +48,7 @@ public class SignOutMS extends javax.swing.JDialog {
         BTNNo.setBackground(new java.awt.Color(0, 102, 255));
         BTNNo.setForeground(new java.awt.Color(255, 255, 255));
         BTNNo.setText("No");
+        BTNNo.setBorderPainted(false);
         BTNNo.setColorClick(new java.awt.Color(0, 153, 204));
         BTNNo.setColorOver(new java.awt.Color(0, 204, 255));
         BTNNo.setFillBorder(10);
@@ -65,6 +63,7 @@ public class SignOutMS extends javax.swing.JDialog {
         BTNYes.setBackground(new java.awt.Color(0, 102, 255));
         BTNYes.setForeground(new java.awt.Color(255, 255, 255));
         BTNYes.setText("Si");
+        BTNYes.setBorderPainted(false);
         BTNYes.setColorClick(new java.awt.Color(0, 153, 204));
         BTNYes.setColorOver(new java.awt.Color(0, 204, 255));
         BTNYes.setFillBorder(10);

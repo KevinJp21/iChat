@@ -97,6 +97,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="No"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="colorClick" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="99" red="0" type="rgb"/>
             </Property>
@@ -125,6 +126,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Si"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="colorClick" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="99" red="0" type="rgb"/>
             </Property>

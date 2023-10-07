@@ -1,7 +1,6 @@
 package Vista;
 
 import Controlador.Method;
-import Controlador.Scroll;
 import java.awt.Adjustable;
 import java.awt.Color;
 import java.awt.Component;
@@ -12,17 +11,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
-import java.awt.geom.RoundRectangle2D;
 import javax.swing.ImageIcon;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.Timer;
 import message.Message;
 
-public class Main extends javax.swing.JFrame {
+public class HomeChat extends javax.swing.JFrame {
     int LayoutX;
     int LayoutY;
-    public Main() {
+    public HomeChat() {
         setIconImage(new ImageIcon(getClass().getResource("/icon/icon.png")).getImage());//icono que aparece en la barra de tareas
         initComponents();
         open();
@@ -30,9 +28,6 @@ public class Main extends javax.swing.JFrame {
 
     private void open() {
         Method.setFram(this);
-        //Scroll manteniendo el click izquierdo
-        new Scroll(panelChat);
-        new Scroll(panelFriend);
         Method.setTextFieldSyle(txt,"");
     }
 
@@ -42,25 +37,9 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        popUp = new javax.swing.JPopupMenu();
-        popUp_emoji = new javax.swing.JPopupMenu();
-        popMix = new javax.swing.JPopupMenu();
         panel_bg = new javax.swing.JPanel();
         spChat = new javax.swing.JScrollPane();
-        panelChat = new javax.swing.JDesktopPane(){
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                int width = getWidth();
-                int height = getHeight();
-                g.fillRect(0, 0, getWidth(), getHeight());
-                RoundRectangle2D roundRect = new RoundRectangle2D.Float(0, 0, width, height, 20, 20); // Radio de las esquinas
-                Graphics2D g2d = (Graphics2D) g;
-                g2d.setColor(getBackground());
-                g2d.fill(roundRect);
-            }
-        }
-
+        panelChat = new javax.swing.JDesktopPane()
         ;
         spFriend = new javax.swing.JScrollPane();
         panelFriend = new javax.swing.JPanel();
@@ -86,15 +65,6 @@ public class Main extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         LBIcon = new javax.swing.JLabel();
 
-        popUp.setBackground(new java.awt.Color(0,0,0,0));
-
-        popUp_emoji.setBackground(new java.awt.Color(0,0,0,0));
-        popUp_emoji.setMaximumSize(new java.awt.Dimension(504, 355));
-        popUp_emoji.setMinimumSize(new java.awt.Dimension(504, 355));
-        popUp_emoji.setPreferredSize(new java.awt.Dimension(504, 355));
-
-        popUp.setBackground(new java.awt.Color(0,0,0,0));
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chat");
         setBackground(new java.awt.Color(2, 0, 8));
@@ -114,6 +84,7 @@ public class Main extends javax.swing.JFrame {
         spChat.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         panelChat.setBackground(new java.awt.Color(2, 0, 8));
+        panelChat.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         panelChat.setLayout(new javax.swing.BoxLayout(panelChat, javax.swing.BoxLayout.Y_AXIS));
         spChat.setViewportView(panelChat);
 
@@ -518,7 +489,7 @@ public class Main extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Main().setVisible(true);
+                new HomeChat().setVisible(true);
             }
         });
     }
@@ -538,9 +509,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JDesktopPane panelChat;
     private javax.swing.JPanel panelFriend;
     private javax.swing.JPanel panel_bg;
-    private javax.swing.JPopupMenu popMix;
-    private javax.swing.JPopupMenu popUp;
-    private javax.swing.JPopupMenu popUp_emoji;
     private javax.swing.JScrollPane spChat;
     private javax.swing.JScrollPane spFriend;
     private javax.swing.JTextField txt;
